@@ -7,8 +7,8 @@ ad_page_contract {
 
 set resource_info [::bootstrap_icons::resource_info]
 
-set title "[dict get $resource_info resourceName] - Sample page"
-set context [list $title]
+set title "Sample Icons"
+set context [list [list "." "Boostrap Icons"] $title] 
 
 # local URL
 set URL /resources/bootstrap-icons/bootstrap-icons-$::bootstrap_icons::version/
