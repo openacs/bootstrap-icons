@@ -17,11 +17,15 @@ all of these are usable independent of the style of the site.
 and others in Bootstrap 5, and the classic Bootstrap 3 look-and-feel
 should be kept, and the identical markup should adapt its
 Look-and-Feel depending on the subsite theme, there are some
-restrictions. OpenACS supports the icon sets "classic" (old-style
-gif/png images), "glyphicons" (Part of Bootstrap 3) , and the
-"bootstrap-icons" (usable for all themes).  Some of the icon names are
-usable for all OpenACS icon sets, some of these can be used without
-further mapping as replacement of the gyphicons of Bootstrap 3.
+restrictions. OpenACS supports the icon sets
+<a href="https://openacs.org/doc/acs-subsite/images">"classic"</a>
+(old-style gif/png images),
+<a href="https://getbootstrap.com/docs/3.4/components/">"glyphicons"</a>
+(Part of Bootstrap 3) , and the
+<a href="https://icons.getbootstrap.com/">"bootstrap-icons"</a> (usable for all
+themes).  Some of the icon names are usable for all OpenACS icon sets,
+some of these can be used without further mapping as replacement of
+the gyphicons of Bootstrap 3.
 
 <p>
 See below for lists of valid names.
@@ -29,7 +33,9 @@ See below for lists of valid names.
 <ul>
 
 <li><p>Currently defined <em>generic adp:icons</em>, working with icon
-sets "classic", "glyphicons", and "bootstrap-icons".  This means that
+sets "classic",
+<a href="https://getbootstrap.com/docs/3.4/components/">"glyphicons"</a>, and
+<a href="https://icons.getbootstrap.com/">"bootstrap-icons"</a>.  This means that
 via switching the themes, different icon sets are used without the
 need of rewriting any code.
 
@@ -45,8 +51,9 @@ need of rewriting any code.
     </blockquote>
 </li>
 
-<li><p><em>Common adp:icons</em> defined for icon sets "glyphicons",
-and "bootstrap-icons".<br> These have identical names in these icon
+<li><p><em>Common adp:icons</em> defined for icon sets
+<a href="https://getbootstrap.com/docs/3.4/components/">"glyphicons"</a>,
+and <a href="https://icons.getbootstrap.com/">"bootstrap-icons"</a>.<br> These have identical names in these icon
 sets and work without an additional mapping. This means that when using these names,
 switching between Bootstrap 3 and Bootstrap 5 works without rewriting any code.
 

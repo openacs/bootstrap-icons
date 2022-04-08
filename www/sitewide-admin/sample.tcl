@@ -40,7 +40,7 @@ set content [subst {
     <h3>Using an Bootstrap Icons as SVG image</h3>
     <p>Bootstrap <img src="$URL/bootstrap.svg" alt="Bootstrap" width="32" height="32">
 
-    <h3>Using an Bootstrap Icons as fonts (sample)</h3>
+    <h3>Using Bootstrap Icons as fonts (sample)</h3>
                                            
     <blockquote class="mx-4">
     GitHub <i class="bi-github" role="img" aria-label="GitHub"></i><br>
@@ -49,6 +49,7 @@ set content [subst {
     arrow-up-right-square <i class="bi bi-arrow-up-right-square"></i><br>
     arrow-up-square <i class="bi bi-arrow-up-square"></i><br>
     box-arrow-up-right <i class="bi bi-box-arrow-up-right"></i><br>
+    check <i class="bi bi-check"></i><br>   
     clock-history <i class="bi bi-clock-history"></i><br>
     cloud <i class="bi bi-cloud"></i><br>
     envelope <i class="bi bi-envelope"></i><br>
