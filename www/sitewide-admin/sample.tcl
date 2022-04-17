@@ -9,6 +9,7 @@ set resource_info [::bootstrap_icons::resource_info]
 
 set title "Sample Icons"
 set context [list [list "." "Boostrap Icons"] $title] 
+set iconset [::template::iconset]
 
 # local URL
 set URL /resources/bootstrap-icons/bootstrap-icons-$::bootstrap_icons::version/
@@ -46,6 +47,7 @@ set content [subst {
     GitHub <i class="bi-github" role="img" aria-label="GitHub"></i><br>
     archive <i class="bi bi-archive"></i><br>
     arrow-up-circle <i class="bi bi-arrow-up-circle"></i><br>
+    arrow-right-circle <i class="bi bi-arrow-right-circle"></i><br>
     arrow-up-right-square <i class="bi bi-arrow-up-right-square"></i><br>
     arrow-up-square <i class="bi bi-arrow-up-square"></i><br>
     box-arrow-up-right <i class="bi bi-box-arrow-up-right"></i><br>

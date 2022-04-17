@@ -51,7 +51,7 @@ namespace eval ::bootstrap_icons {
         set cdnHost     cdnjs.cloudflare.com
         set cdn         //$cdnHost/
 
-        if {[file exists $resourceDir//bootstrap-icons-$version]} {
+        if {[file exists $resourceDir/bootstrap-icons-$version]} {
             #
             # Local version is installed
             #
@@ -147,7 +147,7 @@ namespace eval ::bootstrap_icons {
         }
 
         #
-        # So far, everything is fine, unpack the editor package.
+        # So far, everything is fine, unpack the dowloaded zip file
         #
         foreach url [dict get $resource_info downloadURLs] {
             set fn [file tail $url]

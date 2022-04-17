@@ -4,7 +4,7 @@
 
 <h1>@title;noquote@</h1>
 <h3>Support for the adp:icon Tag</h3>
-<p>adp:icons can be used on ADP pages with
+<p>Bootstrap Icons adp:icons can be used on ADP pages with
     <blockquote class="mx-4">
     <code>&lt;adp:icon name="<i>NAME</i>" title="..." style="..." class="..."&gt;</code>
     </blockquote>
@@ -21,33 +21,44 @@ restrictions. OpenACS supports the icon sets
 <a href="https://openacs.org/doc/acs-subsite/images">"classic"</a>
 (old-style gif/png images),
 <a href="https://getbootstrap.com/docs/3.4/components/">"glyphicons"</a>
-(Part of Bootstrap 3) , and the
+(Part of Bootstrap 3),
 <a href="https://icons.getbootstrap.com/">"bootstrap-icons"</a> (usable for all
-themes).  Some of the icon names are usable for all OpenACS icon sets,
-some of these can be used without further mapping as replacement of
-the gyphicons of Bootstrap 3.
+themes), and
+<a href="https://fontawesome.com/search?m=free">"fa-icons"</a> (usable
+for all themes).  Some of the icon names are usable via adp:icon for
+all OpenACS icon sets, some of these can be used without further
+mapping as replacement of the gyphicons of Bootstrap 3.
 
-<p>
-See below for lists of valid names.
+<p> The names which can be used for all icon sets are called "generic", since for these, a mapping from the specific icon set to the generic name exists. See below for lists of names and contexts, where
+these can be used.
 
 <ul>
-
-<li><p>Currently defined <em>generic adp:icons</em>, working with icon
-sets "classic",
-<a href="https://getbootstrap.com/docs/3.4/components/">"glyphicons"</a>, and
-<a href="https://icons.getbootstrap.com/">"bootstrap-icons"</a>.  This means that
-via switching the themes, different icon sets are used without the
-need of rewriting any code.
+<li><p>Defined <strong>generic names</strong> for <code>adp:icons</code>,
+working with icon sets
+<a href="https://openacs.org/doc/acs-subsite/images">"classic"</a>,
+<a href="https://getbootstrap.com/docs/3.4/components/">"glyphicons"</a>,
+<a href="https://icons.getbootstrap.com/">"bootstrap-icons"</a>, and
+<a href="https://fontawesome.com/search?m=free">"fa-icons"</a>.  This means that the same
+name can be used in the markup. When switching the themes/iconset,
+different icon sets are used without the need of rewriting any markup. These icons are
+displayed here in the currently defined icon set <strong>@iconset@</strong>.
 
     <blockquote class="mx-4">
-      edit   <adp:icon name="edit"><br>
-      trash  <adp:icon name="trash"><br>
-      radio-checked  <adp:icon name="radio-checked"><br>
-      radio-unchecked  <adp:icon name="radio-unchecked"><br>
-      checkbox-checked  <adp:icon name="checkbox-checked"><br>
+      arrow-down          <adp:icon name="arrow-down"><br>
+      arrow-up            <adp:icon name="arrow-up"><br>
+      checkbox-checked    <adp:icon name="checkbox-checked"><br>
       checkbox-unchecked  <adp:icon name="checkbox-unchecked"><br>
-      arrow-down  <adp:icon name="arrow-down"><br>
-      arrow-up  <adp:icon name="arrow-up"><br>
+      edit                <adp:icon name="edit"><br>
+      eye-closed          <adp:icon name="eye-closed"><br>
+      eye-open            <adp:icon name="eye-open"><br>
+      file                <adp:icon name="file"><br>
+      form-info-sign      <adp:icon name="form-info-sign"><br>
+      radio-checked       <adp:icon name="radio-checked"><br>
+      radio-unchecked     <adp:icon name="radio-unchecked"><br>
+      reload              <adp:icon name="reload"><br>
+      text                <adp:icon name="text"><br>
+      trash               <adp:icon name="trash"><br>
+      watch               <adp:icon name="watch"><br>
     </blockquote>
 </li>
 
