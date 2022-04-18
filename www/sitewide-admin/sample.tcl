@@ -8,7 +8,7 @@ ad_page_contract {
 set resource_info [::bootstrap_icons::resource_info]
 
 set title "Sample Icons"
-set context [list [list "." "Boostrap Icons"] $title] 
+set context [list [list "." "Boostrap Icons"] $title]
 set iconset [::template::iconset]
 
 # local URL
@@ -37,12 +37,43 @@ set CSS_URL urn:ad:css:bootstrap-icons
 
 template::head::add_css -href $CSS_URL
 
+append genericHTML \
+    {<table class="table">} \n \
+    {<tr><th scope="col">Name</th><th scope="col" >bootstrap-icons</th>} \
+    [expr {$iconset ne "bootstrap-icons" ? "<th scope='col'>$iconset</th>" : ""}] \
+    </tr>\n \
+    [join [lmap name {
+        arrow-down
+        arrow-up
+        checkbox-checked
+        checkbox-unchecked
+        edit
+        eye-closed
+        eye-open
+        file
+        form-info-sign
+        radio-checked
+        radio-unchecked
+        reload
+        text
+        trash
+        watch
+    } {
+        set _ <tr>
+        append _ [subst {<td scope="row">$name</td><td><adp:icon iconset="bootstrap-icons" name="$name"></td>}]
+        if {$iconset ne "bootstrap-icons"} {
+            append _ [subst {<td><adp:icon name="$name"></td>}]
+        }
+        append _ </tr>
+    }] \n] \
+    </table>\n
+
 set content [subst {
     <h3>Using an Bootstrap Icons as SVG image</h3>
     <p>Bootstrap <img src="$URL/bootstrap.svg" alt="Bootstrap" width="32" height="32">
 
     <h3>Using Bootstrap Icons as fonts (sample)</h3>
-                                           
+
     <blockquote class="mx-4">
     GitHub <i class="bi-github" role="img" aria-label="GitHub"></i><br>
     archive <i class="bi bi-archive"></i><br>
@@ -51,7 +82,7 @@ set content [subst {
     arrow-up-right-square <i class="bi bi-arrow-up-right-square"></i><br>
     arrow-up-square <i class="bi bi-arrow-up-square"></i><br>
     box-arrow-up-right <i class="bi bi-box-arrow-up-right"></i><br>
-    check <i class="bi bi-check"></i><br>   
+    check <i class="bi bi-check"></i><br>
     clock-history <i class="bi bi-clock-history"></i><br>
     cloud <i class="bi bi-cloud"></i><br>
     envelope <i class="bi bi-envelope"></i><br>
@@ -68,7 +99,6 @@ set content [subst {
     </blockquote>
 
     <h3>Resource info for Bootstrap Icons</h3>
-    
+
     <p> <table>[join [lmap {k v} $resource_info {string cat <tr><td><i>$k ":</td><td> " $v</td></tr>}]]</table>
 }]
-
