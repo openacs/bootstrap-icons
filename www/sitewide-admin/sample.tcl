@@ -9,6 +9,16 @@ set resource_info [::bootstrap_icons::resource_info]
 
 set title "Sample Icons"
 set context [list [list "." "Boostrap Icons"] $title]
+#
+# Collect generic names
+#
+set generic {}
+foreach iconset [dict keys $::template::icon::map] {
+    lappend generic {*}[dict keys [dict get $::template::icon::map $iconset]]
+}
+#
+# Default iconset
+#
 set iconset [::template::iconset]
 
 # local URL
@@ -42,28 +52,13 @@ append genericHTML \
     {<tr><th scope="col">Name</th><th scope="col" >bootstrap-icons</th>} \
     [expr {$iconset ne "bootstrap-icons" ? "<th scope='col'>$iconset</th>" : ""}] \
     </tr>\n \
-    [join [lmap name {
-        arrow-down
-        arrow-up
-        checkbox-checked
-        checkbox-unchecked
-        edit
-        eye-closed
-        eye-open
-        file
-        form-info-sign
-        radio-checked
-        radio-unchecked
-        reload
-        text
-        trash
-        watch
-    } {
+    [join [lmap name [lsort -unique [set generic]] {
         set _ <tr>
         append _ [subst {<td scope="row">$name</td><td><adp:icon iconset="bootstrap-icons" name="$name"></td>}]
         if {$iconset ne "bootstrap-icons"} {
-            append _ [subst {<td><adp:icon name="$name"></td>}]
+            append _ [subst {<td><adp:icon name="$name" alt="$name"></td>}]
         }
+        #append _ [subst {<td><adp:icon iconset="classic" name="$name" alt="$name"></td>}]
         append _ </tr>
     }] \n] \
     </table>\n
