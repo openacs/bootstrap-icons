@@ -21,12 +21,12 @@ namespace eval ::bootstrap_icons {
     # configuration file:
     #
     # ns_section ns/server/${server}/acs/bootstrap-icons
-    #        ns_param BootstrapIconsVersion 1.9.1
+    #        ns_param BootstrapIconsVersion 1.10.2
     #
     set ::bootstrap_icons::version [parameter::get \
                                         -package_id $package_id \
                                         -parameter BootstrapIconsVersion \
-                                        -default 1.9.1]
+                                        -default 1.10.2]
 
     ad_proc ::bootstrap_icons::resource_info {
         {-version ""}
@@ -101,7 +101,9 @@ namespace eval ::bootstrap_icons {
             extraFiles {} \
             downloadURLs https://github.com/twbs/icons/releases/download/v${version}/bootstrap-icons-${version}.zip \
             cspMap $cspMap \
-            urnMap {}
+            urnMap {} \
+            versionCheckURL "https://cdnjs.com/libraries?q=bootstrap-icons"
+
         
         return $result
     }
