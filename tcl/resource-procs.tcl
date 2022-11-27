@@ -149,7 +149,7 @@ namespace eval ::bootstrap_icons {
         }
 
         #
-        # So far, everything is fine, unpack the dowloaded zip file
+        # So far, everything is fine, unpack the downloaded zip file
         #
         foreach url [dict get $resource_info downloadURLs] {
             set fn [file tail $url]

@@ -8,7 +8,7 @@ ad_page_contract {
 set resource_info [::bootstrap_icons::resource_info]
 
 set title "Sample Icons"
-set context [list [list "." "Boostrap Icons"] $title]
+set context [list [list "." "Bootstrap Icons"] $title]
 #
 # Collect generic names
 #
