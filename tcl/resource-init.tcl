@@ -1,6 +1,6 @@
-#template::register_urn -urn urn:ad:css:bootstrap-icons \
-#    -resource //maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css \
-#    -csp_list {font-src maxcdn.bootstrapcdn.com style-src maxcdn.bootstrapcdn.com}
+ad_library {
+    Initialization for Bootstrap Icons
+}
 
 set resource_info [::bootstrap_icons::resource_info]
 
@@ -33,3 +33,9 @@ template::register_urn \
     -csp_list [expr {[dict exists $resource_info cspMap $URN]
                      ? [dict get $resource_info cspMap $URN]
                      : ""}]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
