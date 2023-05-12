@@ -21,12 +21,12 @@ namespace eval ::bootstrap_icons {
     # configuration file:
     #
     # ns_section ns/server/${server}/acs/bootstrap-icons
-    #        ns_param BootstrapIconsVersion 1.10.3
+    #        ns_param BootstrapIconsVersion 1.10.5
     #
     set ::bootstrap_icons::version [parameter::get \
                                         -package_id $package_id \
                                         -parameter BootstrapIconsVersion \
-                                        -default 1.10.3]
+                                        -default 1.10.5]
 
     ad_proc ::bootstrap_icons::resource_info {
         {-version ""}
@@ -104,7 +104,7 @@ namespace eval ::bootstrap_icons {
             urnMap {} \
             versionCheckURL "https://cdnjs.com/libraries?q=bootstrap-icons"
 
-        
+
         return $result
     }
 
