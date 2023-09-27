@@ -26,7 +26,7 @@ namespace eval ::bootstrap_icons {
     set ::bootstrap_icons::version [parameter::get \
                                         -package_id $package_id \
                                         -parameter BootstrapIconsVersion \
-                                        -default 1.10.5]
+                                        -default 1.11.1]
 
     ad_proc ::bootstrap_icons::resource_info {
         {-version ""}
