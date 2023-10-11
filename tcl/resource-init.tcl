@@ -19,8 +19,16 @@ if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne
 
 } else {
     set fn bootstrap-icons.css
-    if {[apm_version_names_compare $::bootstrap_icons::version 1.10.4] >= 0} {
-        ns_log notice "CSS [dict get $resource_info prefix]/$fn "
+    #
+    # Unfortunately, the structure of the distributed .zip file is
+    # version dependent: Versions greater or equal to 1.10.4 and less
+    # than 1.11.0 require a "font" in the path.
+    #
+    if {[apm_version_names_compare $::bootstrap_icons::version 1.10.4] >= 0
+        && [apm_version_names_compare $::bootstrap_icons::version 1.11.0 ] < 0 } {
+        #
+        # Adding "font" to the path.
+        #
         set fn font/$fn
     }
 }
