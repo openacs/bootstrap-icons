@@ -4,12 +4,12 @@ ad_library {
 
 set resource_info [::bootstrap_icons::resource_info]
 
-if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne ""} {
-    #
-    # The .min.css is just on the CDN
-    #
-    set fn bootstrap-icons.min.css
+#
+# We go for the minified version.
+#
+set fn bootstrap-icons.min.css
 
+if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne ""} {
     #
     # Add global CSP rules.
     #
@@ -18,18 +18,23 @@ if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne
         font-src [dict get $resource_info cdnHost]
 
 } else {
-    set fn bootstrap-icons.css
     #
     # Unfortunately, the structure of the distributed .zip file is
     # version dependent: Versions greater or equal to 1.10.4 and less
     # than 1.11.0 require a "font" in the path.
     #
     if {[apm_version_names_compare $::bootstrap_icons::version 1.10.4] >= 0
-        && [apm_version_names_compare $::bootstrap_icons::version 1.11.0 ] < 0 } {
+        && [apm_version_names_compare $::bootstrap_icons::version 1.11.1 ] < 0 } {
         #
         # Adding "font" to the path.
         #
         set fn font/$fn
+    } else {
+        #
+        # Old zip distributions may not carry the minified version. We
+        # settle for the unminified one in this case.
+        #
+        set fn bootstrap-icons.css
     }
 }
 
