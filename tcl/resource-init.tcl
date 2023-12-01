@@ -21,7 +21,7 @@ if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne
     #
     # Unfortunately, the structure of the distributed .zip file is
     # version dependent: Versions greater or equal to 1.10.4 and less
-    # than 1.11.0 require a "font" in the path.
+    # than 1.11.1 require a "font" in the path.
     #
     if {[apm_version_names_compare $::bootstrap_icons::version 1.10.4] >= 0
         && [apm_version_names_compare $::bootstrap_icons::version 1.11.1 ] < 0 } {
