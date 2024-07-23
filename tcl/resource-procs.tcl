@@ -102,8 +102,9 @@ namespace eval ::bootstrap_icons {
             downloadURLs https://github.com/twbs/icons/releases/download/v${version}/bootstrap-icons-${version}.zip \
             cspMap $cspMap \
             urnMap {} \
-            versionCheckURL "https://cdnjs.com/libraries?q=bootstrap-icons"
-
+            versionCheckURL "https://cdnjs.com/libraries?q=bootstrap-icons" \
+            versionCheckAPI {cdn cdnjs library bootstrap-icons count 1} \
+            installedVersion $version
 
         return $result
     }
