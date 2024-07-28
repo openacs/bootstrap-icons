@@ -47,7 +47,6 @@ namespace eval ::bootstrap_icons {
         # Setup variables for access via CDN vs. local resources.
         #
         set resourceDir [acs_package_root_dir bootstrap-icons/www/resources]
-        set resourceUrl /resources/bootstrap-icons
         set cdnHost     cdnjs.cloudflare.com
         set cdn         //$cdnHost/
 
@@ -55,7 +54,7 @@ namespace eval ::bootstrap_icons {
             #
             # Local version is installed
             #
-            set prefix  $resourceUrl/bootstrap-icons-$version
+            set prefix  /resources/bootstrap-icons/bootstrap-icons-$version
             set cdnHost ""
             set cspMap  ""
         } else {
