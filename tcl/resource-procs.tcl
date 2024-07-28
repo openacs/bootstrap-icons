@@ -55,9 +55,9 @@ namespace eval ::bootstrap_icons {
             #
             # Local version is installed
             #
-            set prefix  $resourceUrl/bootstrap-icons-$::bootstrap_icons::version
+            set prefix  $resourceUrl/bootstrap-icons-$version
             set cdnHost ""
-            set cspMap ""
+            set cspMap  ""
         } else {
             #
             # Use CDN
@@ -123,9 +123,7 @@ namespace eval ::bootstrap_icons {
         }
 
         set resource_info [resource_info -version $version]
-        ::util::resources::download \
-            -resource_info $resource_info \
-            -version_dir $version
+        ::util::resources::download -resource_info $resource_info
 
         set resourceDir [dict get $resource_info resourceDir]
         ns_log notice " ::bootstrap_icons::download resourceDir $resourceDir"

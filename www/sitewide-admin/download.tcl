@@ -3,7 +3,7 @@ ad_page_contract {
 
     @creation-date Jan 04, 2017
 } {
-    {version:word,notnull ""}
+    {version:token,notnull ""}
 }
 
 ::bootstrap_icons::download -version $version
