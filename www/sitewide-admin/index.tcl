@@ -6,7 +6,7 @@ ad_page_contract {
 }
 
 set resource_info [::bootstrap_icons::resource_info]
-set version [dict get $resource_info installedVersion]
+set version [dict get $resource_info configuredVersion]
 set download_url [ad_conn url]/download
 
 set title "[dict get $resource_info resourceName] - Sitewide Admin"

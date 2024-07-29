@@ -102,7 +102,7 @@ namespace eval ::bootstrap_icons {
             cspMap $cspMap \
             urnMap {} \
             versionCheckAPI {cdn cdnjs library bootstrap-icons count 1} \
-            installedVersion $version
+            configuredVersion $version
 
         return $result
     }
