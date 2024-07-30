@@ -6,6 +6,7 @@ ad_page_contract {
 }
 
 set resource_info [::bootstrap_icons::resource_info]
+set version [dict get $resource_info configuredVersion]
 
 set title "Sample Icons"
 set context [list [list "." "Bootstrap Icons"] $title]
@@ -22,7 +23,7 @@ foreach iconset [dict keys $::template::icon::map] {
 set iconset [::template::iconset]
 
 # local URL
-set URL /resources/bootstrap-icons/bootstrap-icons-$::bootstrap_icons::version/
+set URL /resources/bootstrap-icons/bootstrap-icons-$version/
 #set CSS_URL $URL/bootstrap-icons.css
 
 #
@@ -38,7 +39,7 @@ set URL /resources/bootstrap-icons/bootstrap-icons-$::bootstrap_icons::version/
 #
 # Direct Cloudflare
 #
-# set CSS_URL https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/$::bootstrap_icons::version/font/bootstrap-icons.min.css
+# set CSS_URL https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/$version/font/bootstrap-icons.min.css
 
 #
 # Generic URL for CSS (based on URN)

@@ -13,20 +13,20 @@ ad_library {
 }
 
 namespace eval ::bootstrap_icons {
-
-    set package_id [apm_package_id_from_key "bootstrap-icons"]
+    variable parameter_info
 
     #
-    # The Bootstrap Icons configuration can be tailored via the OpenACS
+    # The version configuration can be tailored via the OpenACS
     # configuration file:
     #
     # ns_section ns/server/${server}/acs/bootstrap-icons
     #        ns_param BootstrapIconsVersion 1.11.3
     #
-    set ::bootstrap_icons::version [parameter::get \
-                                        -package_id $package_id \
-                                        -parameter BootstrapIconsVersion \
-                                        -default 1.11.3]
+    set parameter_info {
+        package_key bootstrap-icons
+        parameter_name BootstrapIconsVersion
+        default_value 1.11.3
+    }
 
     ad_proc ::bootstrap_icons::resource_info {
         {-version ""}
@@ -36,11 +36,18 @@ namespace eval ::bootstrap_icons {
         from the local filesystem, or from CDN.
 
     } {
+        variable parameter_info
+
         #
-        # If no version is specified, use the namespaced variable.
+        # If no version is specified, use the configured value.
         #
         if {$version eq ""} {
-            set version $::bootstrap_icons::version
+            dict with parameter_info {
+                set version [::parameter::get_global_value \
+                                 -package_key $package_key \
+                                 -parameter $parameter_name \
+                                 -default $default_value]
+            }
         }
 
         #
@@ -102,6 +109,7 @@ namespace eval ::bootstrap_icons {
             cspMap $cspMap \
             urnMap {} \
             versionCheckAPI {cdn cdnjs library bootstrap-icons count 1} \
+            parameterInfo $parameter_info \
             configuredVersion $version
 
         return $result
@@ -114,13 +122,6 @@ namespace eval ::bootstrap_icons {
         into a directory structure similar to the CDN to support the
         installation of multiple versions.
     } {
-        #
-        # If no version is specified, use the namespaced variable.
-        #
-        if {$version eq ""} {
-            set version ${::bootstrap_icons::version}
-        }
-
         set resource_info [resource_info -version $version]
         ::util::resources::download -resource_info $resource_info
 

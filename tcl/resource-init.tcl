@@ -16,7 +16,7 @@ if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne
     lappend ::security::csp::default_directives \
         style-src [dict get $resource_info cdnHost] \
         font-src [dict get $resource_info cdnHost]
-   
+
 } else {
     #
     # Unfortunately, the structure of the distributed .zip file is a
@@ -24,7 +24,8 @@ if {[dict exists $resource_info cdnHost] && [dict get $resource_info cdnHost] ne
     # sometimes, minifiled versions are included. Check in the
     # filesystem, what we have actually got.
     #
-    set fspath [dict get $resource_info resourceDir]/bootstrap-icons-$::bootstrap_icons::version
+    set version [dict get $resource_info configuredVersion]
+    set fspath [dict get $resource_info resourceDir]/bootstrap-icons-$version
 
     #
     # Do we have the subdirectory "font"? If yes, use it.
