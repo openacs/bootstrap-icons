@@ -64,11 +64,32 @@ namespace eval ::bootstrap_icons {
             set prefix  /resources/bootstrap-icons/bootstrap-icons-$version
             set cdnHost ""
             set cspMap  ""
+
+            #
+            # Unfortunately, the structure of the distributed .zip file is a
+            # moving target. Sometimes, a sub folder "fonts" is used,
+            # sometimes, minifiled versions are included. Check in the
+            # filesystem, what we have actually got.
+            #
+            set fspath $resourceDir/bootstrap-icons-$version
+
+            #
+            # Do we have the subdirectory "font"? If yes, use it.
+            #
+            set subdir [expr {[file isdirectory $fspath/font] ? "font/" : ""}]
+            #
+            # Do we have a minified version? If yes, use it.
+            #
+            set fn [expr {[file exists $fspath/${subdir}bootstrap-icons.min.css]
+                          ? "${subdir}bootstrap-icons.min.css"
+                          : "${subdir}bootstrap-icons.css"}]
+
+            dict set URNs urn:ad:css:bootstrap-icons $fn
         } else {
             #
             # Use CDN
             #
-            # cloudflare has the following resources:
+            # cloudflare has e.g. the following resources:
             #
             #    https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/bootstrap-icons.svg
             #    https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css
@@ -76,21 +97,19 @@ namespace eval ::bootstrap_icons {
             #
             # We just need the CSS file, which is on the CDN in the
             # "font" directory.
+            #
             set prefix $cdn/ajax/libs/bootstrap-icons/$version/font
+
+            #
+            # Use always the minified version over the CDN
+            #
+            dict set URNs urn:ad:css:bootstrap-icons bootstrap-icons.min.css
+
             set cspMap [subst {
                 urn:ad:css:bootstrap-icons {
                     style-src $cdnHost
                     font-src $cdnHost
                 }}]
-            #
-            #
-            # Other potential source:
-            #
-            # @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
-            # <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-            #
-            #set cdnHost cdn.jsdelivr.net
-
         }
 
         #
@@ -107,7 +126,7 @@ namespace eval ::bootstrap_icons {
             extraFiles {} \
             downloadURLs https://github.com/twbs/icons/releases/download/v${version}/bootstrap-icons-${version}.zip \
             cspMap $cspMap \
-            urnMap {} \
+            urnMap $URNs \
             versionCheckAPI {cdn cdnjs library bootstrap-icons count 1} \
             parameterInfo $parameter_info \
             configuredVersion $version
