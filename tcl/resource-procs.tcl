@@ -98,18 +98,16 @@ namespace eval ::bootstrap_icons {
             # We just need the CSS file, which is on the CDN in the
             # "font" directory.
             #
-            set prefix $cdn/ajax/libs/bootstrap-icons/$version/font
+            set prefix ${cdn}ajax/libs/bootstrap-icons/$version/font
 
             #
             # Use always the minified version over the CDN
             #
-            dict set URNs urn:ad:css:bootstrap-icons bootstrap-icons.min.css
-
-            set cspMap [subst {
-                urn:ad:css:bootstrap-icons {
-                    style-src $cdnHost
-                    font-src $cdnHost
-                }}]
+            dict set URNs   urn:ad:css:bootstrap-icons bootstrap-icons.min.css
+            dict set cspMap urn:ad:css:bootstrap-icons [subst {
+                style-src $cdnHost
+                font-src $cdnHost
+            }]
         }
 
         #
