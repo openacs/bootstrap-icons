@@ -2,7 +2,7 @@ ad_library {
     Initialization for Bootstrap Icons
 }
 
-::util::resources::register_urns -namespace bootstrap_icons
+::util::resources::register_urns -prefix bootstrap_icons
 
 # Local variables:
 #    mode: tcl
