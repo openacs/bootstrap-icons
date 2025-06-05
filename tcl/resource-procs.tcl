@@ -20,12 +20,12 @@ namespace eval ::bootstrap_icons {
     # configuration file:
     #
     # ns_section ns/server/${server}/acs/bootstrap-icons
-    #        ns_param BootstrapIconsVersion 1.11.3
+    #        ns_param BootstrapIconsVersion 1.13.1
     #
     set parameter_info {
         package_key bootstrap-icons
         parameter_name BootstrapIconsVersion
-        default_value 1.11.3
+        default_value 1.13.1
     }
 
     ad_proc ::bootstrap_icons::resource_info {
@@ -54,7 +54,8 @@ namespace eval ::bootstrap_icons {
         # Setup variables for access via CDN vs. local resources.
         #
         set resourceDir [acs_package_root_dir bootstrap-icons/www/resources]
-        set cdnHost     cdnjs.cloudflare.com
+        #set cdnHost     cdnjs.cloudflare.com
+        set cdnHost     cdn.jsdelivr.net
         set cdn         //$cdnHost/
 
         if {[file exists $resourceDir/bootstrap-icons-$version]} {
@@ -98,7 +99,8 @@ namespace eval ::bootstrap_icons {
             # We just need the CSS file, which is on the CDN in the
             # "font" directory.
             #
-            set prefix ${cdn}ajax/libs/bootstrap-icons/$version/font
+            #set prefix ${cdn}ajax/libs/bootstrap-icons/$version/font
+            set prefix ${cdn}npm/bootstrap-icons@$version/font
 
             #
             # Use always the minified version over the CDN
@@ -125,7 +127,7 @@ namespace eval ::bootstrap_icons {
             downloadURLs https://github.com/twbs/icons/releases/download/v${version}/bootstrap-icons-${version}.zip \
             cspMap $cspMap \
             urnMap $URNs \
-            versionCheckAPI {cdn cdnjs library bootstrap-icons count 1} \
+            versionCheckAPI {cdn jsdelivr library bootstrap-icons count 1} \
             parameterInfo $parameter_info \
             configuredVersion $version
 
@@ -143,7 +145,7 @@ namespace eval ::bootstrap_icons {
         ::util::resources::download -resource_info $resource_info
 
         set resourceDir [dict get $resource_info resourceDir]
-        ns_log notice " ::bootstrap_icons::download resourceDir $resourceDir"
+        ns_log notice "::bootstrap_icons::download resourceDir $resourceDir"
 
         #
         # Do we have unzip installed?
@@ -168,6 +170,7 @@ namespace eval ::bootstrap_icons {
         #
         foreach url [dict get $resource_info downloadURLs] {
             set fn [file tail $url]
+            #ns_log notice UNZIP builds path '$resourceDir' <$version> '$fn'
             util::unzip \
                 -overwrite \
                 -source $resourceDir/$version/$fn \
