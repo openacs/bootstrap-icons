@@ -20,12 +20,12 @@ namespace eval ::bootstrap_icons {
     # configuration file:
     #
     # ns_section ns/server/${server}/acs/bootstrap-icons
-    #        ns_param BootstrapIconsVersion 1.13.1
+    #        ns_param BootstrapIconsVersion 1.13.2
     #
     set parameter_info {
         package_key bootstrap-icons
         parameter_name BootstrapIconsVersion
-        default_value 1.13.1
+        default_value 1.13.2
     }
 
     ad_proc ::bootstrap_icons::resource_info {
